@@ -1,0 +1,51 @@
+_SECTION_BEGIN("OI Crossover");
+
+SetChartOptions(0,chartShowArrows|chartShowDates);
+SetChartBkGradientFill( colorDarkOliveGreen,colorDarkGrey);
+
+_N( Symbol1= ParamStr("Strike1", "BANKNIFTY2121836000CE") );
+SetForeign( Symbol1 );
+C1 = C;
+H1 = H;
+L1 = L;
+O1 = O;
+V1 = V; 
+BullOI=OpenInt;
+RestorePriceArrays();
+_N( Symbol2= ParamStr("Strike2", "BANKNIFTY2121836000PE") );
+SetForeign( Symbol2 );
+C2 = C;
+H2 = H;
+L2 = L;
+O2 = O;
+V2 = V;
+BearOI=OpenInt;
+RestorePriceArrays();
+//Plot (BullOI,"35500CE",colorBrightGreen, styleThick);
+//Plot (BearOI,"35500PE",colorRed, styleThick);
+
+CE = strmid(Symbol1, 14, 7 );
+PE = strmid(Symbol2, 14, 7 );
+
+_SECTION_END();
+
+_SECTION_BEGIN("Trend");
+
+BullTrend = LinRegSlope(BullOI,12);
+BullTrendII = Ref(BullTrend,-1);
+
+mycolor = IIf(BullTrendII < BullTrend, colorLime, colorWhite);
+
+Plot(BullTrend, "Call - "+CE, mycolor, styleThick);
+
+BearTrend = LinRegSlope(BearOI,12); 
+BearTrendII = Ref(BearTrend,-1);
+
+mycolor2 = IIf(BearTrendII < BearTrend, colorRed, colorWhite);
+
+Plot(BearTrend, "Put - "+PE, mycolor2, styleThick);
+
+
+//th=Param("Threshold Line ",-0.05,-1,10,0.1);
+//Plot(th,"Threshold",ParamColor("Zero Line",colorYellow), ParamStyle("Zero Line Style",styleDashed));
+_SECTION_END();
