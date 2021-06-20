@@ -34,3 +34,4 @@ Call OI Trend       Put OI Trend      Probability of price movement
 
 With this is place, we will look to plot the OI trend using a Linear Regression Slope. When a change in trend is detected, it is indicative of an impending price movement
 
+Screenshot (https://github.com/satishnarasimhan/OI-Trend-Indicator/blob/main/OITrend.png OITrend screenshot)
