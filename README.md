@@ -38,4 +38,4 @@ Consequently, one can deduce that when there is a pickup in OI trend, the probab
 
 With this is place, we will look to plot the OI trend using a Linear Regression Slope. When a change in trend is detected, it is indicative of an impending price movement
 
-[screenshot]: https://github.com/satishnarasimhan/OI-Trend-Indicator/blob/main/OITrend.png "OI Trend screenshot"
+Screenshot: https://github.com/satishnarasimhan/OI-Trend-Indicator/blob/main/OITrend.png
