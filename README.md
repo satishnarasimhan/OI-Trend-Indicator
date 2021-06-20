@@ -5,12 +5,12 @@ Open Interest analysis provides significant insight into the strength of price a
 
 This script is based on the work done by Martin Pring in his book 'On Momentum'.
 
-|Price           |       Volume           |          Open Interest      |           Market     |
-|:--------------:|:----------------------:|:---------------------------:|:--------------------:|
-|1.Rising        |        Up              |           Up                |           Strong     |
-|2.Rising        |        Down            |           Down              |           Weak       |
-|3.Declining     |        Up              |           Up                |           Weak       |
-|4.Declining     |        Down            |           Down              |           Strong     |
+| # |Price         |       Volume           |          Open Interest      |           Market     |
+|---|--------------|------------------------|-----------------------------|----------------------|
+| 1 |Rising        |        Up              |           Up                |           Strong     |
+| 2 |Rising        |        Down            |           Down              |           Weak       |
+| 3 |Declining     |        Up              |           Up                |           Weak       |
+| 4 |Declining     |        Down            |           Down              |           Strong     |
 
 this table in turn, translates to:
 Bullish :- An increasing Open Interest in a rising market. Buoyed by momentum of additional long positions
@@ -25,12 +25,12 @@ A rise in ATM Call OI, represents a view that the sellers do not expect a price 
 
 Consequently, one can deduce that when there is a pickup in OI trend, the probable direction of price movement can be determined.
 
-|Call OI Trend   |    Put OI Trend   |   Probability of price movement                     |
-|----------------|-------------------|-----------------------------------------------------|
-|1. Rising       |    Rising         |   Sellers in control. Narrow price range            |
-|2. Rising       |    Falling        |   Call sellers in control. Price tends to move down |
-|3. Falling      |    Rising         |   Put Sellers in control. Price tends to move up    |
-|4. Falling      |    Falling        |   Positions being exited. Narrow price range        |
+| # |Call OI Trend   |    Put OI Trend   |   Probability of price movement                     |
+|---|----------------|-------------------|-----------------------------------------------------|
+|1  |Rising          |    Rising         |   Sellers in control. Narrow price range            |
+|2  |Rising          |    Falling        |   Call sellers in control. Price tends to move down |
+|3  |Falling         |    Rising         |   Put Sellers in control. Price tends to move up    |
+|4  |Falling         |    Falling        |   Positions being exited. Narrow price range        |
 
 With this is place, we will look to plot the OI trend using a Linear Regression Slope. When a change in trend is detected, it is indicative of an impending price movement
 
