@@ -1,0 +1,62 @@
+//AFL for Spreads
+_SECTION_BEGIN("Bear and Bull Spread");
+SetChartOptions(0,chartShowArrows|chartShowDates);
+SetChartBkGradientFill( ParamColor("BgTop", colorDarkOliveGreen),ParamColor("BgBottom", colorDarkGrey));
+_N( Symbol1= ParamStr("Strike1", "BANKNIFTY21D0236500CE") );
+
+SetForeign( Symbol1 );
+C1 = C;
+H1 = H;
+L1 = L;
+O1 = O;
+V1 = V;
+RestorePriceArrays();
+
+
+_N( Symbol2= ParamStr("Strike2", "BANKNIFTY21D0237500CE") );
+
+SetForeign( Symbol2 );
+C2 = C;
+H2 = H;
+L2 = L;
+O2 = O;
+V2 = V;
+RestorePriceArrays();
+
+Color = ParamColor( "Color", colorRed );
+Style = ParamStyle( "Style", styleLine, maskPrice );
+
+s = (1*C1-1*C2);
+//PlotOHLC( (1*O1-1*O2), (1*H1-1*H2), (1*L1-1*L2), (1*C1-1*C2), "(" + Symbol1+" - "+Symbol2 + ") Spread", Color, style );
+
+Trend = LinRegSlope(s,14);
+TrendII = Ref(Trend,-1);
+
+fcolor = IIf(Trend > TrendII, colorGold, colorRed);
+Plot(s,"(" + Symbol1+" - "+Symbol2 + ") Spread",fcolor,styleLine);
+
+
+_SECTION_END();
+
+_SECTION_BEGIN("EMA");
+
+show = ParamToggle("EMA Plots","Hide|Show",0);
+if(show==1) 
+{
+P = ParamField("Price field",-1);
+Periods = Param("Periods", 15, 2, 300, 1, 10 );
+Plot( EMA( P, Periods ), _DEFAULT_NAME(), ParamColor( "Color", colorCycle ), ParamStyle("Style") ); 
+_SECTION_END();
+
+_SECTION_BEGIN("EMA1");
+P = ParamField("Price field",-1);
+Periods = Param("Periods", 15, 2, 300, 1, 10 );
+Plot( EMA( P, Periods ), _DEFAULT_NAME(), ParamColor( "Color", colorCycle ), ParamStyle("Style") ); 
+_SECTION_END();
+
+_SECTION_BEGIN("EMA2");
+P = ParamField("Price field",-1);
+Periods = Param("Periods", 15, 2, 300, 1, 10 );
+Plot( EMA( P, Periods ), _DEFAULT_NAME(), ParamColor( "Color", colorCycle ), ParamStyle("Style") ); 
+}
+_SECTION_END();
